@@ -1,4 +1,4 @@
-/*var loadProfileInfo = (function ($) {
+var loadProfileInfo = (function ($) {
 
     $('.account_name div').val('Name: ');
     $('.account_amount div').val('Amount: ');
@@ -20,7 +20,7 @@
 
     });
 
-}(jQuery));*/
+}(jQuery));
 
 
 
@@ -66,7 +66,7 @@ function buySpecificOrder(e) {
             if (data.resp.code === "200") {
                 toastr.success("You just made a purchase.");
 
-                //loadProfileInfo;
+                loadProfileInfo;
                 //schedule; // to update all information on the site
             } else {
                 toastr.warning("An error occurred in the transaction.")
@@ -103,7 +103,10 @@ function setAnOfferForSale(amount) {
             $.getJSON(APIURL+'?what=sell&amount='+amount+'&&apikey='+APIKEY, function (data) {
 
                 if (data.resp.code === "200") {
-                    toastr.success("You just sold for " + data.data.amount + ".")
+                    loadProfileInfo;
+                    getAllOffers;
+                    toastr.success("You just sold for " + data.data.amount + ".");
+                    schedule;
                 } else {
                     toastr.warning("Something went wrong")
                 }

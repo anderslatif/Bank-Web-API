@@ -16,21 +16,14 @@ $(document).ready(function() {
 });
 
 
-var truulean = true;
-
 var schedule = (function ($) {
 
     setTimeout(arguments.callee, callAPIEvery);
 
 
 
+    var loadProfileInfoI = (function ($) {
 
-    var loadProfileInfo = (function ($) {
-
-        if (truulean) {
-
-/*        $('.account_name div').text('Name: ');
-        $('.account_amount div').text('Amount: ');*/
 
         $.getJSON(APIURL+'?what=account_info&apikey='+APIKEY, function (data) {
 
@@ -39,14 +32,10 @@ var schedule = (function ($) {
             $.each(data, function() {
                 $.each(this, function(key, val) {
 
-
                     if (val.currency != undefined && val.amount != undefined) {
-
 
                         $('.my_account').append('<div class="account_name">Name: '+ val.currency+'</div>');
                         $('.my_account').append('<div class="account_amount">Amount: '+ val.amount +'</div>');
-
-
 
 
                     }
@@ -55,21 +44,13 @@ var schedule = (function ($) {
             });
 
         });
-
-            truulean = false;
-    } else {
-
-            $('.my_account div').remove();
-
-            $('.my_account').append('<div class="account_name">Name: '+'</div>');
-            $('.my_account').append('<div class="account_amount">Amount: '+'</div>');
-            truulean = true;
-    }
-
     }(jQuery));
 
 
-    var getAllOffers = (function ($) {
+
+
+
+    var getAllOffersI = (function ($) {
 
             $.getJSON(APIURL+'?what=offers&apikey='+APIKEY, function (data) {
 
@@ -121,12 +102,15 @@ let lookUpConvert = function (e) {
 
 let readyToSell = function () {
     let amountToSell = $("#sell_amount").val();
-    if (amountToSell === "") {
+    if ($("#sell_amount").val() === "") {
         toastr.info("You have not filled out an amount.");
     } else {
-        setAnOfferForSale();
+        setAnOfferForSale(amountToSell);
+        schedule;
+
         $("#sell_amount").val('');
     }
+
 
     return false;
 };
