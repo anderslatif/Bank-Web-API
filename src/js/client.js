@@ -12,6 +12,7 @@ const callAPIEvery = 5 * 60 * second / devDivision;
 $(document).ready(function() {
     $('#conversion_submit').click(lookUpConvert);
     $('#sell_submit').click(readyToSell);
+
 });
 
 
@@ -20,8 +21,62 @@ var schedule = (function ($) {
 
     setTimeout(arguments.callee, callAPIEvery);
 
-    loadProfileInfo;
-    getAllOffers;
+
+
+
+    var getAllOffers = (function ($) {
+
+
+        if (showAllOffers) {
+
+            $.getJSON(APIURL+'?what=offers&apikey='+APIKEY, function (data) {
+
+                $('.tbody tr').remove();
+
+                console.log(showAllOffers);
+
+                //let offers = [], $tbody;
+
+
+                $.each(data, function() {
+                    $.each(this, function(key, val) {
+
+                        if (val.id != undefined) { //todo change or die
+
+                            $('.tbody').append('<tr id="' + key + '"><th scope="row" class="tr_id">'+val.id+'</th><td class="tr_amount">'+val.amount+'</td>' +
+                                '<td class="tr_currency">'+val.currency+'</td><td class="tr_since">'+val.since+'</td>' +
+                                '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>'
+                            );
+
+/*                            offers.push('<tr id="' + key + '"><th scope="row" class="tr_id">'+val.id+'</th><td class="tr_amount">'+val.amount+'</td>' +
+                                '<td class="tr_currency">'+val.currency+'</td><td class="tr_since">'+val.since+'</td>' +
+                                '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>');*/
+                        }
+
+                    });
+                });
+
+/*                $tbody = $('<tbody />').appendTo('.table');
+
+                //append list items to list
+                $tbody.append(offers);
+                $('.tr').page*/
+
+                setInterval(getAllOffers, callAPIEvery);
+
+                showAllOffers = false;
+            });
+
+
+        } else {
+            console.log(showAllOffers);
+
+            $('.tbody tr').remove();
+
+            showAllOffers = true;
+        }
+
+    }(jQuery));
 
 }(jQuery));
 
