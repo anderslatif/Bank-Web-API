@@ -1,12 +1,14 @@
+/*
+require('../styles/styles.scss');
+*/
+
+
+
 const second = 1000;
 const callAPIEvery = 5 * 60 * second;
 
-const APIURL = '';
-const APIKEY = '';
-const USERCURRENCY = '';
 
-
-//const app = document.getElementById('app');
+// const app = document.getElementById('app');
 
 $(document).ready(function() {
     $('#conversion_submit').click(lookUpConvert);

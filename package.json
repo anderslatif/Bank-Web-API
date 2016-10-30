@@ -8,6 +8,7 @@
     "babel-cli": "^6.4.0",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.16.2",
     "css-loader": "*",
@@ -23,7 +24,6 @@
     "file-loader": "*",
     "json-loader": "0.5.x",
     "jquery": "*",
-    "browserify": "*",
     "toastr": "*"
   },
   "scripts": {
