@@ -7,6 +7,7 @@
     <link rel="stylesheet/css" href="./styles/main.css">
     <link rel="stylesheet/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="js/Scripts/Tokens.js"></script>
+    <script src="js/Scripts/APIcall.js"></script>
     <script src="js/client.js"></script>
 
     <link href="js/Misc/toastr.css" rel="stylesheet"/>
@@ -16,7 +17,6 @@
 <body>
 
 <h1>B・O・A</h1>
-<p>Bank of Anders</p>
 <!--<div class="app_body" id="app"></div>-->
 
 <div class="my_account">
@@ -24,6 +24,23 @@
     <div class="account_amount"></div>
 </div>
 
+<div class="sell">
+    Sell
+    <form>
+        Amount <input type="text" id="sell_amount">
+        <input id="sell_submit" type="submit" value="Sell">
+    </form>
+</div>
+
+
+<div class="conversion">
+    Exchange Rates
+    <form>
+        From Currency  <input type="text" id="Currency1">
+        To Currency  <input type="text" id="Currency2">
+        <input id="conversion_submit" type="submit" value="Convert">
+    </form>
+</div>
 
 <div class="table-responsive">
     <table class="table">
@@ -41,17 +58,6 @@
     </table>
 </div>
 
-
-
-
-<div class="conversion">
-    Exchange Rates
-    <form>
-        Currency 1 <input type="text" id="Currency1">
-        Currency 2 <input type="text" id="Currency2">
-        <input id="conversion_submit" type="submit" value="Convert">
-    </form>
-</div>
 
 
 </body>
