@@ -1,14 +1,11 @@
-/*var constants = require("./Scripts/Tokens");*/
 const second = 1000;
 const callAPIEvery = 5 * 60 * second;
 
-const APIURL = 'http://52.57.228.6/man2API/php/BankPhp.php';
-const APIKEY = '85e259f5068d670b36c2bebb336a2587';
-const USERCURRENCY = 'ande996v ';
+const APIURL = '';
+const APIKEY = '';
+const USERCURRENCY = '';
 
 
-
-// https://github.com/webpack/example-app/blob/master/app/app.js
 //const app = document.getElementById('app');
 
 $(document).ready(function() {

@@ -29,7 +29,7 @@ module.exports = {
     },
     plugins: debug ? [] : [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('main.css', {
+        new ExtractTextPlugin('styles.css', {
             allChunks: true
         })
     ]
