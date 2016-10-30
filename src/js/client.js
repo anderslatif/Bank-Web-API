@@ -2,10 +2,9 @@
 require('../styles/styles.scss');
 */
 
-
-
 const second = 1000;
-const callAPIEvery = 5 * 60 * second;
+const devDivision = 50;
+const callAPIEvery = 5 * 60 * second / devDivision;
 
 
 // const app = document.getElementById('app');
@@ -21,12 +20,8 @@ var schedule = (function ($) {
 
     setTimeout(arguments.callee, callAPIEvery);
 
-
     loadProfileInfo;
     getAllOffers;
-
-
-    // ################### conversion rates
 
 }(jQuery));
 
@@ -52,8 +47,13 @@ let lookUpConvert = function (e) {
 
 
 let readyToSell = function () {
-
-    setAnOfferForSale($("#sell_amount").val());
+    let amountToSell = $("#sell_amount").val();
+    if (amountToSell === "") {
+        toastr.info("You have not filled out an amount.");
+    } else {
+        setAnOfferForSale();
+        $("#sell_amount").val('');
+    }
 
     return false;
 };

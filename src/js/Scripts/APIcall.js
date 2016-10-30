@@ -1,5 +1,8 @@
 var loadProfileInfo = (function ($) {
 
+/*    $('.account_name div').val('Name: ');
+    $('.account_amount div').val('Amount: ');*/
+
     $.getJSON(APIURL+'?what=account_info&apikey='+APIKEY, function (data) {
 
         $.each(data, function() {
@@ -24,11 +27,19 @@ var loadProfileInfo = (function ($) {
 
 
 
-
+var showAllOffers = true;
 
 var getAllOffers = (function ($) {
 
+/*
+    $('.tbody ul').remove();
+*/
+
+if (showAllOffers) {
+
     $.getJSON(APIURL+'?what=offers&apikey='+APIKEY, function (data) {
+
+        console.log(showAllOffers);
 
         let offers = [], $tbody;
 
@@ -50,7 +61,15 @@ var getAllOffers = (function ($) {
 
         //append list items to list
         $tbody.append(offers);
+        $('.tbody').page
     });
+
+
+} else {
+    console.log(showAllOffers);
+
+    $('.tbody ul').remove();
+}
 
 }(jQuery));
 

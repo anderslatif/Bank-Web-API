@@ -1,66 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Bank of Anders</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link rel="stylesheet/css" href="./styles/main.css">
-    <link rel="stylesheet/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="js/Scripts/Tokens.js"></script>
-    <script src="js/Scripts/APIcall.js"></script>
-    <script src="js/client.js"></script>
+    <head>
+        <meta charset="utf-8">
 
-    <link href="js/Misc/toastr.css" rel="stylesheet"/>
-    <script src="js/Misc/toastr.js"></script>
-</head>
+        <title>Bank Of Anders</title>
+        <meta name="description" content="">
+        <link href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAKoAAAGAAAAH4AAAH/AAABmYAAAZmAAAAZgAAAGYAAAH8AAAD+AAABmAAAAZgAAAGZgAABmYAAAP+AAAB+AAAAGAAAD+fwAA+B8AAOAPAADmZwAA5mcAAP5nAAD+ZwAA+A8AAPAfAADmfwAA5n8AAOZnAADmZwAA8AcAAPgfAAD+fwAA" rel="icon" type="image/x-icon" />
 
-<body>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 
-<h1>B・O・A</h1>
-<!--<div class="app_body" id="app"></div>-->
+        <link rel="stylesheet" href="styles/main.css">
 
-<div class="my_account">
-    <div class="account_name"></div>
-    <div class="account_amount"></div>
-</div>
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">  <!-- This is for inverse table styling-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 
-<div class="sell">
-    Sell
-    <form>
-        Amount <input type="text" id="sell_amount">
-        <input id="sell_submit" type="submit" value="Sell">
-    </form>
-</div>
+        <script src="js/Scripts/Tokens.js"></script>
+        <script src="js/Scripts/APIcall.js"></script>
+        <script src="js/client.js"></script>
 
+        <link href="js/Misc/toastr.css" rel="stylesheet"/>
+        <script src="js/Misc/toastr.js"></script>
+    </head>
 
-<div class="conversion">
-    Exchange Rates
-    <form>
-        From Currency  <input type="text" id="Currency1">
-        To Currency  <input type="text" id="Currency2">
-        <input id="conversion_submit" type="submit" value="Convert">
-    </form>
-</div>
+    <body>
+    <div class="container-fluid">
+        <h1>B・O・A</h1>
 
-<div class="table-responsive">
-    <table class="table">
-        <thead class="thead-inverse">
-        <tr>
-            <th>ID</th>
-            <th>Amount</th>
-            <th>Currency</th>
-            <th>Since</th>
-            <th>Buy</th>
-        </tr>
-        </thead>
-        <tbody class="tbody">
-        </tbody>
-    </table>
-</div>
+        <div class=".col-md-4 my_account">
+            <h4 class="my_account_title">My Account</h4>
+            <div class="account_name"></div>
+            <div class="account_amount"></div>
+        </div>
+
+        <div class=".col-md-4 sell">
+            <h4 class="sell_title">Sell</h4>
+            <form>
+                Amount <input type="text" id="sell_amount">
+                <input id="sell_submit" type="submit" value="Sell">
+            </form>
+        </div>
 
 
+        <div class=".col-md-4 conversion">
+            <h4 class="conversion_title">Exchange Rates</h4>
+            <form>
+                From Currency  <input type="text" id="Currency1">
+                To Currency  <input type="text" id="Currency2">
+                <input id="conversion_submit" type="submit" value="Convert">
+            </form>
+        </div>
 
-</body>
+        <table class="table .table-responsive">
+            <thead class="thead-inverse">
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Since</th>
+                <th>Buy</th>
+            </tr>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+        </table>
 
-
+    </div>
+    </body>
 </html>
