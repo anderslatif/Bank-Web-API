@@ -1,7 +1,7 @@
-var loadProfileInfo = (function ($) {
+/*var loadProfileInfo = (function ($) {
 
-/*    $('.account_name div').val('Name: ');
-    $('.account_amount div').val('Amount: ');*/
+    $('.account_name div').val('Name: ');
+    $('.account_amount div').val('Amount: ');
 
     $.getJSON(APIURL+'?what=account_info&apikey='+APIKEY, function (data) {
 
@@ -18,30 +18,22 @@ var loadProfileInfo = (function ($) {
             });
         });
 
-
     });
 
-}(jQuery));
+}(jQuery));*/
 
 
 
 
 
-var showAllOffers = true;
 
 var getAllOffers = (function ($) {
 
-/*
-    $('.tbody ul').remove();
-*/
-
-if (showAllOffers) {
-
     $.getJSON(APIURL+'?what=offers&apikey='+APIKEY, function (data) {
 
-        console.log(showAllOffers);
+        $('.tbody tr').remove();
 
-        let offers = [], $tbody;
+        //let offers = [], $tbody;
 
 
         $.each(data, function() {
@@ -49,27 +41,16 @@ if (showAllOffers) {
 
                 if (val.id != undefined) { //todo change or die
 
-                    offers.push('<tr id="' + key + '"><th scope="row" class="tr_id">'+val.id+'</th><td class="tr_amount">'+val.amount+'</td>' +
+                    $('.tbody').append('<tr id="' + key + '"><th scope="row" class="tr_id">'+val.id+'</th><td class="tr_amount">'+val.amount+'</td>' +
                         '<td class="tr_currency">'+val.currency+'</td><td class="tr_since">'+val.since+'</td>' +
-                        '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>');
+                        '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>'
+                    );
                 }
 
             });
         });
 
-        $tbody = $('<tbody />').appendTo('.table');
-
-        //append list items to list
-        $tbody.append(offers);
-        $('.tbody').page
     });
-
-
-} else {
-    console.log(showAllOffers);
-
-    $('.tbody ul').remove();
-}
 
 }(jQuery));
 
@@ -85,8 +66,8 @@ function buySpecificOrder(e) {
             if (data.resp.code === "200") {
                 toastr.success("You just made a purchase.");
 
-                loadProfileInfo;
-                schedule; // to update all information on the site
+                //loadProfileInfo;
+                //schedule; // to update all information on the site
             } else {
                 toastr.warning("An error occurred in the transaction.")
             }

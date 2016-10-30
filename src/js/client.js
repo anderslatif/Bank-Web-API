@@ -4,7 +4,7 @@ require('../styles/styles.scss');
 
 const second = 1000;
 const devDivision = 50;
-const callAPIEvery = 5 * 60 * second / devDivision;
+const callAPIEvery = devDivision == 0 ?  5 * 60 * second : 5 * 60 * second / devDivision;
 
 
 // const app = document.getElementById('app');
@@ -16,6 +16,7 @@ $(document).ready(function() {
 });
 
 
+var truulean = true;
 
 var schedule = (function ($) {
 
@@ -24,16 +25,55 @@ var schedule = (function ($) {
 
 
 
+    var loadProfileInfo = (function ($) {
+
+        if (truulean) {
+
+/*        $('.account_name div').text('Name: ');
+        $('.account_amount div').text('Amount: ');*/
+
+        $.getJSON(APIURL+'?what=account_info&apikey='+APIKEY, function (data) {
+
+            $('.my_account div').remove();
+
+            $.each(data, function() {
+                $.each(this, function(key, val) {
+
+
+                    if (val.currency != undefined && val.amount != undefined) {
+
+
+                        $('.my_account').append('<div class="account_name">Name: '+ val.currency+'</div>');
+                        $('.my_account').append('<div class="account_amount">Amount: '+ val.amount +'</div>');
+
+
+
+
+                    }
+
+                });
+            });
+
+        });
+
+            truulean = false;
+    } else {
+
+            $('.my_account div').remove();
+
+            $('.my_account').append('<div class="account_name">Name: '+'</div>');
+            $('.my_account').append('<div class="account_amount">Amount: '+'</div>');
+            truulean = true;
+    }
+
+    }(jQuery));
+
+
     var getAllOffers = (function ($) {
-
-
-        if (showAllOffers) {
 
             $.getJSON(APIURL+'?what=offers&apikey='+APIKEY, function (data) {
 
                 $('.tbody tr').remove();
-
-                console.log(showAllOffers);
 
                 //let offers = [], $tbody;
 
@@ -48,34 +88,12 @@ var schedule = (function ($) {
                                 '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>'
                             );
 
-/*                            offers.push('<tr id="' + key + '"><th scope="row" class="tr_id">'+val.id+'</th><td class="tr_amount">'+val.amount+'</td>' +
-                                '<td class="tr_currency">'+val.currency+'</td><td class="tr_since">'+val.since+'</td>' +
-                                '<td><input type="submit" class="tbl_Update" id="'+ val.id +'" value="Buy" onclick="buySpecificOrder(this);"></td></tr>');*/
                         }
 
                     });
                 });
 
-/*                $tbody = $('<tbody />').appendTo('.table');
-
-                //append list items to list
-                $tbody.append(offers);
-                $('.tr').page*/
-
-                setInterval(getAllOffers, callAPIEvery);
-
-                showAllOffers = false;
             });
-
-
-        } else {
-            console.log(showAllOffers);
-
-            $('.tbody tr').remove();
-
-            showAllOffers = true;
-        }
-
     }(jQuery));
 
 }(jQuery));
